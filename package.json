@@ -3,10 +3,6 @@
     "version": "0.0.2",
     "description": "This is the shit!",
     "scripts": {
-        "build-coffee": "coffee -o output/ -c sources/source/*/*.coffee",
-        "watch-coffee": "coffee -o output/ -cw sources/source/*/*.coffee",
-        "build-live": "echo 0",
-        "watch-live": "echo 0",
         "link-all-js-and-json": "toolset/thingy-build-system/link-all-js-and-json.js",
         "ncu-update": "ncu -u",
         "reinstall": "pnpm install",
@@ -25,8 +21,7 @@
         "postinstall": "pnpm run initialize-thingy",
         "initialize-thingy": "run-s -ns build",
         "copy-all-js": "cp sources/source/*/*.js output/",
-        "build": "run-s -ns clean-package copy-all-js build-live build-coffee copyscript install-node-modules",
-        "watch": "run-p -nsr copy-all-js watch-live watch-coffee",
+        "build": "run-s -ns clean-package copy-all-js copyscript install-node-modules",
         "release": "run-s -ns build publish-script",
         "package-update-release": "run-s -ns update-tools update-packages inc-versions update-cli-packages push release",
         "inc-versions": "toolset/thingy-build-system/package/inc-versions.js",
@@ -36,7 +31,8 @@
         "publish-script": "toolset/thingy-build-system/package/publish-on-npm.sh",
         "clean-package": "toolset/thingy-build-system/package/clean-package.sh",
         "install-node-modules": "toolset/thingy-build-system/package/install-node-modules.sh",
-        "copyscript": "sources/ressources/copyscript.sh"
+        "copyscript": "sources/ressources/copyscript.sh",
+        "test": "node --test testing/"
     },
     "repository": {
         "type": "git",
@@ -49,16 +45,17 @@
     },
     "homepage": "https://github.com/JhonnyJason/thingy-crypto-node#readme",
     "dependencies": {
-        "coffeescript": "^2.7.0",
-        "livescript": "^1.6.0",
         "npm-check-updates": "^17.1.11",
         "npm-run-all": "^4.1.5",
         "thingy-allmodules-sync": "^0.2.0",
+        "thingy-debug": "^0.0.1",
         "thingy-module-gen": "^0.1.6",
         "thingymodulecreate": "^0.1.8",
-        "thingysync": "^0.1.2",
-        "thingy-debug": "^0.0.1"
+        "thingysync": "^0.1.2"
     },
     "thingytype": "package",
-    "lang": "en"
+    "lang": "en",
+    "devDependencies": {
+        "thingy-crypto-node-legacy": "npm:thingy-crypto-node@0.0.2"
+    }
 }

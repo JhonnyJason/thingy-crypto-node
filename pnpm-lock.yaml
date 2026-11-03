@@ -8,12 +8,6 @@ importers:
 
   .:
     dependencies:
-      coffeescript:
-        specifier: ^2.7.0
-        version: 2.7.0
-      livescript:
-        specifier: ^1.6.0
-        version: 1.6.0
       npm-check-updates:
         specifier: ^17.1.11
         version: 17.1.11
@@ -31,10 +25,14 @@ importers:
         version: 0.1.6
       thingymodulecreate:
         specifier: ^0.1.8
-        version: 0.1.8
+        version: 0.1.8(supports-color@7.2.0)
       thingysync:
         specifier: ^0.1.2
-        version: 0.1.2
+        version: 0.1.2(supports-color@7.2.0)
+    devDependencies:
+      thingy-crypto-node-legacy:
+        specifier: npm:thingy-crypto-node@0.0.2
+        version: thingy-crypto-node@0.0.2
 
 packages:
 
@@ -45,6 +43,9 @@ packages:
   '@babel/helper-validator-identifier@7.25.9':
     resolution: {integrity: sha512-Ed61U6XJc3CVRfkERJWDz4dJwKe7iLmmJsbOGu9wSloNSFttHV0I8g6UAgb7qnK5ly5bGLPd4oXZlxCdANBOWQ==}
     engines: {node: '>=6.9.0'}
+
+  '@noble/ed25519@2.3.0':
+    resolution: {integrity: sha512-M7dvXL2B92/M7dw9+gzuydL8qn/jiqNHaoR3Q+cb1q1GHV7uwE17WCyFMG+Y+TZb5izcaXk5TdJRrDUxHXL78A==}
 
   '@octokit/auth-token@2.5.0':
     resolution: {integrity: sha512-r5FVUJCOLl19AxiuZD2VRZ/ORjp/4IN98Of6YJoJOkY75CIBuYfmiNHGrDwXr+aLGG55igl9QrxX3hbiXlLb+g==}
@@ -181,9 +182,6 @@ packages:
   brace-expansion@1.1.11:
     resolution: {integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==}
 
-  buffer-from@1.1.2:
-    resolution: {integrity: sha512-E+XQCRwSbaaiChtv6k6Dwgc+bx+Bs6vuKJHHl5kox/BaKbhiXzqQOwK4cO22yElGp2OCmjwVhT3HmxgyPGnJfQ==}
-
   buffer@5.7.1:
     resolution: {integrity: sha512-EHcyIPBQ4BSGlvjB16k5KgAJ27CIsHY/2JBmCRReo48y9rQ3MaUzWX3KVlBa4U7MyX02HdVj0K7C3WaB3ju7FQ==}
 
@@ -250,11 +248,6 @@ packages:
 
   clui@0.3.6:
     resolution: {integrity: sha512-Z4UbgZILlIAjkEkZiDOa2aoYjohKx7fa6DxIh6cE9A6WNWZ61iXfQc6CmdC9SKdS5nO0P0UyQ+WfoXfB65e3HQ==}
-
-  coffeescript@2.7.0:
-    resolution: {integrity: sha512-hzWp6TUE2d/jCcN67LrW1eh5b/rSDKQK6oD6VMLlggYVUUFexgTH9z3dNYihzX4RMhze5FTUsUmOXViJKFQR/A==}
-    engines: {node: '>=6'}
-    hasBin: true
 
   color-convert@1.9.3:
     resolution: {integrity: sha512-QfAUtd+vFdAtFQcC8CCyYt1fYWxSqAiK2cSD6zDB8N3cpsEBAvRxp9zOGg6G/SHHJYAT88/az/IuDGALsNVbGg==}
@@ -330,9 +323,6 @@ packages:
   decode-uri-component@0.2.2:
     resolution: {integrity: sha512-FqUYQ+8o158GyGTrMFJms9qh3CqTKvAqgqsTnkLI8sKu0028orqBhxNMFkFen0zGyg6epACD32pjVk58ngIErQ==}
     engines: {node: '>=0.10'}
-
-  deep-is@0.1.4:
-    resolution: {integrity: sha512-oIPzksmTg4/MriiaYGO+okXDT7ztn/w3Eptv/+gSIdMdKsJo0u4CfYNFJPy+4SKMuCqGw2wxnA+URMg3t8a/bQ==}
 
   defaults@1.0.4:
     resolution: {integrity: sha512-eFuaLoy/Rxalv2kr+lqMlUnrDWV+3j4pljOIJgLIhI058IQfWJ7vXhyEIHu+HtC738klGALYxOKDO0bQP3tg8A==}
@@ -450,9 +440,6 @@ packages:
 
   fast-json-stable-stringify@2.1.0:
     resolution: {integrity: sha512-lhd/wF+Lk98HZoTCtlVraHtfh5XYijIjalXck7saUtuanSDyLMxnHhSXEDJqHxD7msR8D0uCmqlkwjCV8xvwHw==}
-
-  fast-levenshtein@2.0.6:
-    resolution: {integrity: sha512-DCXu6Ifhqcks7TZKY3Hxp3y6qphY5SJZmrWMDrKcERSOXWQdMhU9Ig/PYrzyw/ul9jOIyh0N4M0tbC5hodg8dw==}
 
   figures@3.2.0:
     resolution: {integrity: sha512-yaduQFRKLXYOGgEn6AZau90j3ggSOyiqXU0F9JZfeXYhNa+Jk4X+s45A2zg5jns87GAFa34BBm2kXw4XpNcbdg==}
@@ -789,20 +776,11 @@ packages:
     resolution: {integrity: sha512-4/Xcb0hqeueNX9sa+G2jREiam9yb+I2Y3p3J42lIeitAenHXUZwpyejEgeQcQsaGl+hbuA0s7c3u+nlcIYFtog==}
     engines: {node: '>=8'}
 
-  levn@0.3.0:
-    resolution: {integrity: sha512-0OO4y2iOHix2W6ujICbKIaEQXvFQHue65vUG3pb5EUomzPI90z9hsA1VsO/dbIIpC53J8gxM9Q4Oho0jrCM/yA==}
-    engines: {node: '>= 0.8.0'}
-
   li@1.3.0:
     resolution: {integrity: sha512-z34TU6GlMram52Tss5mt1m//ifRIpKH5Dqm7yUVOdHI+BQCs9qGPHFaCUTIzsWX7edN30aa2WrPwR7IO10FHaw==}
 
   lines-and-columns@1.2.4:
     resolution: {integrity: sha512-7ylylesZQ/PV29jhEDl3Ufjo6ZX7gCqJr5F7PKrqc93v7fzSymt1BpwEU8nAUXs8qzzvqhbjhK5QZg6Mt/HkBg==}
-
-  livescript@1.6.0:
-    resolution: {integrity: sha512-x5q+sx1/rOPmx6Fp04gjUqRr4XL5djqXPctu6FPBktm7d7gfRrKkYj9PhMeKT8OKE1bfL92njzAwaN8JCj8kRQ==}
-    engines: {node: '>= 0.8.0'}
-    hasBin: true
 
   load-json-file@4.0.0:
     resolution: {integrity: sha512-Kx8hMakjX03tiGTLAIdJ+lL0htKnXjEZN6hk/tozf/WOuYGdZBJrZ+rCJRbVCugsjB3jMLn9746NsQIf5VjBMw==}
@@ -955,10 +933,6 @@ packages:
     resolution: {integrity: sha512-kbpaSSGJTWdAY5KPVeMOKXSrPtr8C8C7wodJbcsd51jRnmD+GZu8Y0VoU6Dm5Z4vWr0Ig/1NKuWRKf7j5aaYSg==}
     engines: {node: '>=6'}
 
-  optionator@0.8.3:
-    resolution: {integrity: sha512-+IW9pACdk3XWmmTXG8m3upGUJst5XRGzxMRjXzAuJ1XnIFNvfhjjIuYkDvysnPQ7qzqVzLt78BCruntqRhWQbA==}
-    engines: {node: '>= 0.8.0'}
-
   ora@4.1.1:
     resolution: {integrity: sha512-sjYP8QyVWBpBZWD6Vr1M/KwknSw6kJOz41tvGMlwWeClHBtYKTbHMki1PsLZnxKpXMPbTKv9b3pjQu3REib96A==}
     engines: {node: '>=8'}
@@ -1040,10 +1014,6 @@ packages:
   possible-typed-array-names@1.0.0:
     resolution: {integrity: sha512-d7Uw+eZoloe0EHDIYoe+bQ5WXnGMOpmiZFTuMWCwpjzzkL2nTjcKiAk4hh8TjnGye2TwWOk3UXucZ+3rbmBa8Q==}
     engines: {node: '>= 0.4'}
-
-  prelude-ls@1.1.2:
-    resolution: {integrity: sha512-ESF23V4SKG6lVSGZgYNpbsiaAkdab6ZgOxe52p7+Kid3W3u3bxR4Vfd/o21dmN7jSt0IwgZ4v5MUd26FEtXE9w==}
-    engines: {node: '>= 0.8.0'}
 
   psl@1.15.0:
     resolution: {integrity: sha512-JZd3gMVBAVQkSs6HdNZo9Sdo0LNcQeMNP3CozBJb3JYC/QUYZTnKxP+f8oWRX4rHP5EurWxqAHTSwUCjlNKa1w==}
@@ -1162,6 +1132,9 @@ packages:
   safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
 
+  secret-manager-crypto-utils@0.3.1:
+    resolution: {integrity: sha512-w4usWFH1r4ucR8dZBk81kmBo3ZOouU6a+/fZEaOFaP22icFapbelf1f5M1QwcbZ0AwPDeWfwvq8DfNOr0PAQyg==}
+
   semver@5.7.2:
     resolution: {integrity: sha512-cBznnQ9KjJqU67B52RMC65CMarK2600WFnbkcaiwWq3xy/5haFJlshgnpjovMVJ+Hff49d8GEn0b87C5pDQ10g==}
     hasBin: true
@@ -1200,13 +1173,6 @@ packages:
 
   simple-git@1.132.0:
     resolution: {integrity: sha512-xauHm1YqCTom1sC9eOjfq3/9RKiUA9iPnxBbrY2DdL8l4ADMu0jjM5l5lphQP5YWNqAL2aXC/OeuQ76vHtW5fg==}
-
-  source-map-support@0.5.6:
-    resolution: {integrity: sha512-N4KXEz7jcKqPf2b2vZF11lQIz9W5ZMuUcIOGj243lduidkf2fjkVKJS9vNxVWn3u/uxX38AcE8U9nnH9FPcq+g==}
-
-  source-map@0.6.1:
-    resolution: {integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==}
-    engines: {node: '>=0.10.0'}
 
   spdx-correct@3.2.0:
     resolution: {integrity: sha512-kN9dJbvnySHULIluDHy32WHRUu3Og7B9sbY7tsFLctQkIqnMh3hErYgdMjTYuqmcXX+lK5T1lnUt3G7zNswmZA==}
@@ -1299,6 +1265,12 @@ packages:
     resolution: {integrity: sha512-jth7wTJ3i3px8uh93haM13deSwkZoiWYymHyUsTceOIiYAk53nbywUqo6wTiLaya5qid17w6KDte4xLpxL9SsA==}
     hasBin: true
 
+  thingy-byte-utils@0.0.8:
+    resolution: {integrity: sha512-m9+aSv0XrU1g6Da61Qq0ZnyflSYx1/uWfD98UFziOV4WMrEzE5eHTjXGhxhFRzauL3EkwujZZJbOBxj8PzHyAg==}
+
+  thingy-crypto-node@0.0.2:
+    resolution: {integrity: sha512-wFpB8evuisJbZ/ZZmYEkcvfwJs5Ls16Co4G9wl4AQg4h8jZjN+b0a1Kj+X+2nEDsySp+iTO68xJAznjIpf0J3w==}
+
   thingy-debug@0.0.1:
     resolution: {integrity: sha512-PBIOqHt1KXDsMENJip89IwzZhc8vhv88rp7aw89O+hfSQA5QMqOxAjaILGmPK2H+yeePyTuTBWqTfHCWW6vNDQ==}
 
@@ -1351,10 +1323,6 @@ packages:
 
   tweetnacl@0.14.5:
     resolution: {integrity: sha512-KXXFFdAbFXY4geFIwoyNK+f5Z1b7swfXABfL7HXCmoIWMKU3dmS26672A4EeQtDzLKy7SXmfBu51JolvEKwtGA==}
-
-  type-check@0.3.2:
-    resolution: {integrity: sha512-ZCmOJdvOWDBYJlzAoFkC+Q0+bUyEOS1ltgp1MGU03fqHG+dbi9tBFU2Rd9QKiDZFAYrhPh2JUf7rZRIuHRKtOg==}
-    engines: {node: '>= 0.8.0'}
 
   type-fest@0.13.1:
     resolution: {integrity: sha512-34R7HTnG0XIJcBSn5XhDd7nNFPRcXYRZrBB2O2jdKqYODldSzBAqzsWoZYYvduky73toYS/ESqxPvkDf/F0XMg==}
@@ -1462,10 +1430,6 @@ packages:
     resolution: {integrity: sha512-OSOGH1QYiW5yVor9TtmXKQvt2vjQqbYS+DqmsZw+r7xDwLXEeT3JGW0ZppFmHx4diyXmxt238KFR3N9jzevBRg==}
     engines: {node: '>=6'}
 
-  word-wrap@1.2.5:
-    resolution: {integrity: sha512-BN22B5eaMMI9UMtjrGd5g5eCYPpCPDUy0FJXbYsaT5zYxjFOckS53SQDE3pWkVoWpHXVb3BrYcEN4Twa55B5cA==}
-    engines: {node: '>=0.10.0'}
-
   wrap-ansi@6.2.0:
     resolution: {integrity: sha512-r6lPcBGxZXlIcymEu7InxDMhdW0KDxpLgoFLcguasxCaJ/SOIZwINatK9KY/tf+ZrlywOKU0UDj3ATXUBfxJXA==}
     engines: {node: '>=8'}
@@ -1500,6 +1464,8 @@ snapshots:
       picocolors: 1.1.1
 
   '@babel/helper-validator-identifier@7.25.9': {}
+
+  '@noble/ed25519@2.3.0': {}
 
   '@octokit/auth-token@2.5.0':
     dependencies:
@@ -1676,8 +1642,6 @@ snapshots:
       balanced-match: 1.0.2
       concat-map: 0.0.1
 
-  buffer-from@1.1.2: {}
-
   buffer@5.7.1:
     dependencies:
       base64-js: 1.5.1
@@ -1753,8 +1717,6 @@ snapshots:
     dependencies:
       cli-color: 0.3.2
 
-  coffeescript@2.7.0: {}
-
   color-convert@1.9.3:
     dependencies:
       color-name: 1.1.3
@@ -1814,9 +1776,11 @@ snapshots:
       es-errors: 1.3.0
       is-data-view: 1.0.1
 
-  debug@4.4.0:
+  debug@4.4.0(supports-color@7.2.0):
     dependencies:
       ms: 2.1.3
+    optionalDependencies:
+      supports-color: 7.2.0
 
   decamelize-keys@1.1.1:
     dependencies:
@@ -1828,8 +1792,6 @@ snapshots:
   decamelize@5.0.1: {}
 
   decode-uri-component@0.2.2: {}
-
-  deep-is@0.1.4: {}
 
   defaults@1.0.4:
     dependencies:
@@ -2020,8 +1982,6 @@ snapshots:
   fast-deep-equal@3.1.3: {}
 
   fast-json-stable-stringify@2.1.0: {}
-
-  fast-levenshtein@2.0.6: {}
 
   figures@3.2.0:
     dependencies:
@@ -2377,21 +2337,9 @@ snapshots:
 
   ky@0.16.2: {}
 
-  levn@0.3.0:
-    dependencies:
-      prelude-ls: 1.1.2
-      type-check: 0.3.2
-
   li@1.3.0: {}
 
   lines-and-columns@1.2.4: {}
-
-  livescript@1.6.0:
-    dependencies:
-      optionator: 0.8.3
-      prelude-ls: 1.1.2
-      source-map: 0.6.1
-      source-map-support: 0.5.6
 
   load-json-file@4.0.0:
     dependencies:
@@ -2563,15 +2511,6 @@ snapshots:
     dependencies:
       mimic-fn: 2.1.0
 
-  optionator@0.8.3:
-    dependencies:
-      deep-is: 0.1.4
-      fast-levenshtein: 2.0.6
-      levn: 0.3.0
-      prelude-ls: 1.1.2
-      type-check: 0.3.2
-      word-wrap: 1.2.5
-
   ora@4.1.1:
     dependencies:
       chalk: 3.0.0
@@ -2653,8 +2592,6 @@ snapshots:
   pify@3.0.0: {}
 
   possible-typed-array-names@1.0.0: {}
-
-  prelude-ls@1.1.2: {}
 
   psl@1.15.0:
     dependencies:
@@ -2820,6 +2757,11 @@ snapshots:
 
   safer-buffer@2.1.2: {}
 
+  secret-manager-crypto-utils@0.3.1:
+    dependencies:
+      '@noble/ed25519': 2.3.0
+      thingy-byte-utils: 0.0.8
+
   semver@5.7.2: {}
 
   semver@7.6.3: {}
@@ -2857,18 +2799,11 @@ snapshots:
 
   signal-exit@3.0.7: {}
 
-  simple-git@1.132.0:
+  simple-git@1.132.0(supports-color@7.2.0):
     dependencies:
-      debug: 4.4.0
+      debug: 4.4.0(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
-
-  source-map-support@0.5.6:
-    dependencies:
-      buffer-from: 1.1.2
-      source-map: 0.6.1
-
-  source-map@0.6.1: {}
 
   spdx-correct@3.2.0:
     dependencies:
@@ -2972,6 +2907,12 @@ snapshots:
       meow: 10.1.5
       mustache: 4.2.0
 
+  thingy-byte-utils@0.0.8: {}
+
+  thingy-crypto-node@0.0.2:
+    dependencies:
+      secret-manager-crypto-utils: 0.3.1
+
   thingy-debug@0.0.1: {}
 
   thingy-module-gen@0.1.6:
@@ -2981,7 +2922,7 @@ snapshots:
       meow: 10.1.5
       mustache: 4.2.0
 
-  thingymodulecreate@0.1.8:
+  thingymodulecreate@0.1.8(supports-color@7.2.0):
     dependencies:
       '@octokit/rest': 17.11.2
       camelcase: 5.3.1
@@ -2994,18 +2935,18 @@ snapshots:
       meow: 6.1.1
       request: 2.88.2
       request-promise: 4.2.6(request@2.88.2)
-      simple-git: 1.132.0
+      simple-git: 1.132.0(supports-color@7.2.0)
     transitivePeerDependencies:
       - encoding
       - supports-color
 
-  thingysync@0.1.2:
+  thingysync@0.1.2(supports-color@7.2.0):
     dependencies:
       chalk: 3.0.0
       clui: 0.3.6
       gitmodules-file-handler: 0.1.1
       meow: 6.1.1
-      simple-git: 1.132.0
+      simple-git: 1.132.0(supports-color@7.2.0)
     transitivePeerDependencies:
       - supports-color
 
@@ -3040,10 +2981,6 @@ snapshots:
       safe-buffer: 5.2.1
 
   tweetnacl@0.14.5: {}
-
-  type-check@0.3.2:
-    dependencies:
-      prelude-ls: 1.1.2
 
   type-fest@0.13.1: {}
 
@@ -3183,8 +3120,6 @@ snapshots:
   windows-release@3.3.3:
     dependencies:
       execa: 1.0.0
-
-  word-wrap@1.2.5: {}
 
   wrap-ansi@6.2.0:
     dependencies:
